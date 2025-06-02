@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Password Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f5f9;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #aaa;
+      text-align: center;
+    }
+    input, button {
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    #password {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #1e40af;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>🔐 Password Generator</h2>
+  <label for="length">Password Length:</label><br>
+  <input type="number" id="length" value="8" min="4" max="20"><br>
+  <button id="generateBtn">Generate Password</button>
+  <div id="password"></div>
+</div>
+
+<script>
+  document.getElementById("generateBtn").addEventListener("click", function() {
+    const length = parseInt(document.getElementById("length").value);
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
+    let password = "";
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * chars.length);
+      password += chars[randomIndex];
+    }
+    document.getElementById("password").innerText = "🔑 " + password;
+  });
+</script>
+
+</body>
+</html>
